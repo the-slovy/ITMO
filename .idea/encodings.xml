@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/Programming/src/lab2/moves/AncientPower.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/Programming/src/lab2/moves/BubbleBeam.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/Programming/src/lab2/moves/DoubleTeam.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/Programming/src/lab2/moves/Facade.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/Programming/src/lab2/moves/MudShot.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/Programming/src/lab2/moves/Rest.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/Programming/src/lab2/moves/RockSlide.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/Programming/src/lab2/moves/Swagger.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/Programming/src/lab2/moves/Tackle.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/Programming/src/lab2/moves/Waterfall.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/Programming/src/lab2/moves/AncientPower.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Programming/src/lab2/moves/BubbleBeam.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Programming/src/lab2/moves/DoubleTeam.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Programming/src/lab2/moves/Facade.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Programming/src/lab2/moves/MudShot.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Programming/src/lab2/moves/Rest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Programming/src/lab2/moves/RockSlide.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Programming/src/lab2/moves/Swagger.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Programming/src/lab2/moves/Tackle.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Programming/src/lab2/moves/Waterfall.java" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

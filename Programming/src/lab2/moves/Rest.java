@@ -9,7 +9,7 @@ public class Rest extends StatusMove {
 
     @Override
     protected String describe() {
-        return "Наевся и спит";
+        return "РќР°РµРІСЃСЏ Рё СЃРїРёС‚";
     }
 
     @Override

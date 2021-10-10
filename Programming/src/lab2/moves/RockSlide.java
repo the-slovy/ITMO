@@ -9,7 +9,7 @@ public class RockSlide extends PhysicalMove {
 
     @Override
     protected String describe() {
-        return "Наносит дамаг и с 30% заставляет цель вздрогнуть";
+        return "РќР°РЅРѕСЃРёС‚ РґР°РјР°Рі Рё СЃ 30% Р·Р°СЃС‚Р°РІР»СЏРµС‚ С†РµР»СЊ РІР·РґСЂРѕРіРЅСѓС‚СЊ";
     }
 
     @Override

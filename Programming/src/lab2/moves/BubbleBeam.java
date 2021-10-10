@@ -9,7 +9,7 @@ public class BubbleBeam extends SpecialMove {
 
     @Override
     protected String describe() {
-        return "Наносит урон и с 10% вероятностью снижает скорость цели";
+        return "РќР°РЅРѕСЃРёС‚ СѓСЂРѕРЅ Рё СЃ 10% РІРµСЂРѕСЏС‚РЅРѕСЃС‚СЊСЋ СЃРЅРёР¶Р°РµС‚ СЃРєРѕСЂРѕСЃС‚СЊ С†РµР»Рё";
     }
 
     @Override

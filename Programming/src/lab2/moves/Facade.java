@@ -11,8 +11,8 @@ public class Facade extends PhysicalMove {
 
     @Override
     protected String describe() {
-        if (flag) return "Вносит x2 урона";
-        return "Просто вносит уроний";
+        if (flag) return "Р’РЅРѕСЃРёС‚ x2 СѓСЂРѕРЅР°";
+        return "РџСЂРѕСЃС‚Рѕ РІРЅРѕСЃРёС‚ СѓСЂРѕРЅРёР№";
     }
 
     @Override

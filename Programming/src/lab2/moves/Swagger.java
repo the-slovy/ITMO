@@ -9,7 +9,7 @@ public class Swagger extends StatusMove {
 
     @Override
     protected String describe() {
-        return "Cбивает с толку";
+        return "CР±РёРІР°РµС‚ СЃ С‚РѕР»РєСѓ";
     }
 
     @Override

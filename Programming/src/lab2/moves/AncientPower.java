@@ -9,7 +9,7 @@ public class AncientPower extends SpecialMove {
 
     @Override
     protected String describe() {
-        return "Древняя сила, вносит урон и с 10% шансом апает все характеристики";
+        return "Р”СЂРµРІРЅСЏСЏ СЃРёР»Р°, РІРЅРѕСЃРёС‚ СѓСЂРѕРЅ Рё СЃ 10% С€Р°РЅСЃРѕРј Р°РїР°РµС‚ РІСЃРµ С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё";
     }
 
     @Override
