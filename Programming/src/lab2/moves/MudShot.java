@@ -9,7 +9,7 @@ public class MudShot extends SpecialMove {
 
     @Override
     protected String describe() {
-        return "Наносит урон грязью и снижает скорость цели";
+        return "Кидается грязью";
     }
 
     @Override

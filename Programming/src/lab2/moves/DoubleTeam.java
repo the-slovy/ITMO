@@ -9,7 +9,7 @@ public class DoubleTeam extends StatusMove {
 
     @Override
     protected String describe() {
-        return "Повышает уклончивость";
+        return "Клонирование";
     }
 
     @Override

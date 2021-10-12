@@ -9,6 +9,6 @@ public class Tackle extends PhysicalMove {
 
     @Override
     protected String describe() {
-        return "Просто вносит уроний";
+        return "Пинается";
     }
 }

@@ -11,7 +11,7 @@ public class Waterfall extends PhysicalMove {
 
     @Override
     protected String describe() {
-        if (flag) return "Наносит урон и с вероятностью 20% заставляет вздрогнуть";
+        if (flag) return "Бьет водичкой";
         return "Наносит урон";
     }
 
