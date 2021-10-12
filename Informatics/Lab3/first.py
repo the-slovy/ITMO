@@ -19,9 +19,18 @@ class First:
             turtle.hideturtle()
             turtle.bgcolor("#121212")
             turtle.pensize(4)
-            turtle.color("#FFFFFF")
+
+            # Draw circle
+            turtle.speed(20)
+            turtle.up()
+            turtle.setpos(0, -300)
+            turtle.begin_fill()
+            turtle.fillcolor("#FFBF00")  # draw head
+            turtle.circle(300)
+            turtle.end_fill()
 
             # Draw X
+            turtle.speed(5)
             turtle.up()
             turtle.setpos(-100, 200)
             turtle.down()
@@ -54,3 +63,6 @@ class First:
             turtle.exitonclick()
         except Exception:
             First.draw_smile()
+
+
+First.draw_smile()
