@@ -19,6 +19,8 @@ public class Main {
         b.addAlly(togepi);
 
         b.addFoe(togekiss);
+        b.addFoe(togetic);
+        b.addFoe(sharpedo);
 
         b.go();
     }
