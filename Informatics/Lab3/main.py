@@ -1,8 +1,8 @@
 import re
 
-from Informatics.Lab3.first import First
-from Informatics.Lab3.second import Second
-from Informatics.Lab3.third import Third
+from Lab3.first import First
+from Lab3.second import Second
+from Lab3.third import Third
 
 
 def num0():
