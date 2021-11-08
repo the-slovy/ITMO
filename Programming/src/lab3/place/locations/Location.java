@@ -6,11 +6,11 @@ import lab3.place.AbstractPlace;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Location extends AbstractPlace implements Locateable {
+public class Location extends AbstractPlace implements Locatable {
     private List<Shorty> shorties;
-    private Locations type;
+    private LocationType type;
 
-    public Location(String name, int capacity, Locations type) {
+    public Location(String name, int capacity, LocationType type) {
         super(name, capacity);
         this.type = type;
         this.shorties = new ArrayList<>();
@@ -39,11 +39,11 @@ public class Location extends AbstractPlace implements Locateable {
         }
     }
 
-    public Locations getType() {
+    public LocationType getType() {
         return type;
     }
 
-    public void changeType(Locations type) {
+    public void changeType(LocationType type) {
         System.out.println("Локация " + this.type + " теперь " + type);
         this.setName(type.toString());
         this.type = type;

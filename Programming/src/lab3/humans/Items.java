@@ -6,10 +6,10 @@ public enum Items {
     STREET_CLOTHES("Уличная одежда");
 
     private final String name;
+
     Items(String name) {
         this.name = name;
     }
-
 
     @Override
     public String toString() {

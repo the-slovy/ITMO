@@ -1,20 +1,18 @@
 package lab3.humans;
 
 
-import lab3.place.locations.Location;
-
 import java.util.Objects;
 
-public abstract class AbstractShorty {
+public abstract class AbstractHuman {
     private String name;
     private int age;
     private int speed;
 
-    public AbstractShorty() {
-        name = "Ноунейм";
-        speed = 5;
+    public AbstractHuman() {
+        this("Ноунейм", 5);
     }
-    public AbstractShorty(String name, int age) {
+
+    public AbstractHuman(String name, int age) {
         this.name = name;
         this.age = age;
         speed = 5;
@@ -23,6 +21,7 @@ public abstract class AbstractShorty {
     public void happyBirthday() {
         age++;
     }
+
     public String getName() {
         return name;
     }
@@ -51,7 +50,7 @@ public abstract class AbstractShorty {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AbstractShorty that = (AbstractShorty) o;
+        AbstractHuman that = (AbstractHuman) o;
         return Objects.equals(name + this.hashCode(), that.name + that.hashCode());
     }
 
@@ -62,6 +61,6 @@ public abstract class AbstractShorty {
 
     @Override
     public int hashCode() {
-        return (int) (name.hashCode() + age * speed * Math.random());
+        return Objects.hash(name, age, speed, Math.random());
     }
 }

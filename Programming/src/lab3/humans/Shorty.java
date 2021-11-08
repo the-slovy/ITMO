@@ -5,15 +5,15 @@ import lab3.place.locations.Location;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Shorty extends AbstractShorty implements Humanable {
+public class Shorty extends AbstractHuman implements Sleepable, Movable {
     private boolean isSleeping;
     private Location totalLocation;
-    private List<Items> items;
+    private Backpack backpack;
 
     public Shorty(Location startLocation) {
         super();
         setAge(20);
-        items = new ArrayList<>();
+        backpack = new Backpack(5, getName());
 
         startLocation.addShortyToLocation(this);
     }
@@ -21,31 +21,30 @@ public class Shorty extends AbstractShorty implements Humanable {
     public Shorty(String name, int age, int speed, Location startLocation) {
         super(name, age);
         setSpeed(speed);
-        items = new ArrayList<>();
+        backpack = new Backpack(5, getName());
 
         startLocation.addShortyToLocation(this);
-    }
-
-    public void addItem(Items item) {
-        items.add(item);
-    }
-
-    public void removeItem(Items item) {
-        if (items.contains(item)) {
-            items.remove(item);
-            System.out.println("Предмет " + item + " удален");
-        } else System.out.println("Такой предмет не найден");
     }
 
     public void setTotalLocation(Location location) {
         totalLocation = location;
     }
 
+    public Backpack getBackpack() {
+        return backpack;
+    }
+
     @Override
-    public void runToLocation(Location location) {
-        totalLocation.deleteShortyFromLocation(this);
-        location.addShortyToLocation(this);
-        totalLocation = location;
+    public void moveToLocation(Location location) {
+        if (!location.getType().toString().equals("Комната")) {
+            if (getBackpack().getItems().contains(Items.STREET_CLOTHES)) {
+                totalLocation.deleteShortyFromLocation(this);
+                location.addShortyToLocation(this);
+                totalLocation = location;
+            } else {
+                System.out.println("Коротышке: " + getName() + " нужно взять одежду чтобы выйти на улицу");
+            }
+        }
     }
 
     @Override
@@ -53,7 +52,10 @@ public class Shorty extends AbstractShorty implements Humanable {
         if (isSleeping) {
             System.out.println("Уже спит");
         } else {
-            if (items.contains(Items.BLANKET) && items.contains(Items.PYJAMAS)) {
+            if (backpack.getItems().contains(Items.BLANKET) && backpack.getItems().contains(Items.PYJAMAS)) {
+                backpack.takeItemFromBackpack(Items.BLANKET.toString());
+                backpack.takeItemFromBackpack(Items.PYJAMAS.toString());
+
                 isSleeping = true;
                 System.out.println(getName() + " заснул");
             } else {
