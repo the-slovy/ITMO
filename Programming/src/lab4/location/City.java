@@ -6,6 +6,7 @@ import lab4.organisms.Organism;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class City extends Settlement {
@@ -54,10 +55,10 @@ public class City extends Settlement {
         List<Buildings> temp = new ArrayList<>();
 
         class BuildingAdder {
-            void addBuilding(Building b) {
+            void addBuilding(Buildings b) {
                 b.setRequiredTime(b.getRequiredTime() - n);
                 if (b.getRequiredTime() <= 0) {
-                   if (b.getName() != "Шахта") {
+                   if (!b.getName().equals("Шахта")) {
                       getBuildingsList().add(new Building(b.getName(), b.getSymbol()));
                    } else {
                     specialBuildingList.add(new SpecialBuilding(b.getName(), b.getSymbol(), b.getRequiredTime()));
@@ -82,10 +83,10 @@ public class City extends Settlement {
         // specialBuildingList.stream().map(i -> i.getName()).collect(Collectors.toList());
         return specialBuildingList.stream().map(new Function<SpecialBuilding, String>(){
             @Override
-            String apply(SpecialBuilding b) {
+            public String apply(SpecialBuilding b) {
                 return b.getName();
             }
-        });
+        }).collect(Collectors.toList());
     }
 
     public void addToResources(Items item) {
