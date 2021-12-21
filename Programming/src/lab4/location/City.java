@@ -53,16 +53,22 @@ public class City extends Settlement {
     public void skipDays(int n) {
         List<Buildings> temp = new ArrayList<>();
 
-        for (Buildings b : getUnderConstruction()) {
-            b.setRequiredTime(b.getRequiredTime() - n);
-            if (b.getRequiredTime() <= 0) {
-                if (b.getName() != "Шахта") {
-                    getBuildingsList().add(new Building(b.getName(), b.getSymbol()));
-                } else {
+        class BuildingAdder {
+            void addBuilding(Building b) {
+                b.setRequiredTime(b.getRequiredTime() - n);
+                if (b.getRequiredTime() <= 0) {
+                   if (b.getName() != "Шахта") {
+                      getBuildingsList().add(new Building(b.getName(), b.getSymbol()));
+                   } else {
                     specialBuildingList.add(new SpecialBuilding(b.getName(), b.getSymbol(), b.getRequiredTime()));
+                   }
+                   temp.add(b);
                 }
-                temp.add(b);
             }
+        }
+        BuildingAdder adder = new BuildingAdder();
+        for (Buildings b : getUnderConstruction()) {
+            adder.addBuilding(b);
         }
 
         for (Buildings b : temp) {
