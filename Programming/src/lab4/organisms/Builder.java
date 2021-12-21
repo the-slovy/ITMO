@@ -2,6 +2,7 @@ package lab4.organisms;
 
 import lab4.Items;
 import lab4.Traits;
+import lab4.exceptions.OrganismCreateException;
 import lab4.location.City;
 import lab4.location.Settlement;
 
@@ -19,7 +20,7 @@ public class Builder extends Human {
             Glowworm glowworm = new Glowworm("glowworm", Arrays.asList(Traits.HARDWORKING, Traits.CLEVER), 10, new GlowwormRecipe());
             return glowworm;
         }
-        return null;
+        throw new OrganismCreateException("НЕТ ПЛАЗМЫ");
     }
 
     public Shoggot createShoggot() {
@@ -28,7 +29,7 @@ public class Builder extends Human {
             Shoggot shoggot = new Shoggot("shoggot", Arrays.asList(Traits.HARDWORKING, Traits.CLEVER), 10, Math.random(), 10, this.getSettlement(), new ShoggotRecipe());
             return shoggot;
         }
-        return null;
+        throw new OrganismCreateException("НЕТ ПЛАЗМЫ");
     }
 
     static class ShoggotRecipe {
