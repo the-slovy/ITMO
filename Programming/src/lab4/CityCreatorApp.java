@@ -1,5 +1,6 @@
 package lab4;
 
+import lab4.exceptions.InvalidCommandException;
 import lab4.location.City;
 import lab4.location.Region;
 import lab4.location.Settlement;
@@ -7,8 +8,8 @@ import lab4.organisms.*;
 
 import java.util.Arrays;
 
-public class Main {
-    public static void main(String[] args) {
+public class CityCreatorApp {
+    public static void main(String[] args) throws InvalidCommandException {
         // create ancients
         Ancient ancient1 = new Ancient("Нерей", 120, Arrays.asList(Traits.DECADENT, Traits.CLEVER, Traits.MASTER));
         Ancient ancient2 = new Ancient("Протей", 119, Arrays.asList(Traits.DECADENT, Traits.CLEVER));
