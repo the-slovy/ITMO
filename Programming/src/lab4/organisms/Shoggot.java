@@ -2,6 +2,7 @@ package lab4.organisms;
 
 import lab4.Buildings;
 import lab4.Traits;
+import lab4.exceptions.InvalidCommandException;
 import lab4.location.City;
 import lab4.location.Settlement;
 
@@ -34,7 +35,7 @@ public class Shoggot extends Organism {
         return intelligence;
     }
 
-    public void buildBuilding(String buildSymbol) {
+    public void buildBuilding(String buildSymbol) throws InvalidCommandException {
         switch (buildSymbol) {
             case "H":
                 settlement.buildBuilding(Buildings.HOUSE, speed);
@@ -51,6 +52,8 @@ public class Shoggot extends Organism {
             case "Mine":
                 ((City) settlement).buildSpecialBuilding(Buildings.MINE, speed);
                 break;
+            default:
+                throw new InvalidCommandException("НЕТ ТАКОЙ КОМАНДЫ");
         }
     }
 
