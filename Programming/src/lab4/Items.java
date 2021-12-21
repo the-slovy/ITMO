@@ -1,14 +1,21 @@
-package lab3.humans;
+package lab4;
 
 public enum Items {
     BLANKET("Одеяло"),
     PYJAMAS("Пижама"),
-    STREET_CLOTHES("Уличная одежда");
+    PLASMA("Протоплазма"),
+    STREET_CLOTHES("Уличная одежда"),
+    STONE("Камень"),
+    WOOD("Дерево");
 
     private final String name;
 
     Items(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
