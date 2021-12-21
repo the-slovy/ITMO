@@ -72,7 +72,14 @@ public class City extends Settlement {
 
     public List<String> getSpecialBuildingNamesList() {
         System.out.println("Здания в городе " + getName());
-        return specialBuildingList.stream().map(i -> i.getName()).collect(Collectors.toList());
+        
+        // specialBuildingList.stream().map(i -> i.getName()).collect(Collectors.toList());
+        return specialBuildingList.stream().map(new Function<SpecialBuilding, String>(){
+            @Override
+            String apply(SpecialBuilding b) {
+                return b.getName();
+            }
+        });
     }
 
     public void addToResources(Items item) {
