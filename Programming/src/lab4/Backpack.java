@@ -8,10 +8,20 @@ public class Backpack {
     private List<Items> items = new ArrayList<>();
 
     public Items getItem(String item) {
-        Items searchItem = items.stream().filter(i -> i.getName().equals(item)).collect(Collectors.toList()).get(0);
-        return searchItem;
+        List<Items> searchItems = items.stream().filter(i -> i.getName().equals(item)).collect(Collectors.toList());
+        if (searchItems.isEmpty()) {
+            System.out.println("Нет такого предмета: " + item);
+            return null;
+        } else{
+            return searchItems.get(0);
+        }
     }
+
     public void addItem(Items item) {
         items.add(item);
+    }
+
+    public void removeItem(Items item) {
+        items.remove(item);
     }
 }

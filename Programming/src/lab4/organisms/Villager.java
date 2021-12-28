@@ -28,12 +28,6 @@ public abstract class Villager extends Organism implements HasName {
         this.profession = profession;
         this.settlement = settlement;
     }
-    public Villager(String name, int age, Settlement settlement) {
-        super(name, age);
-
-        this.profession = "безработный";
-        this.settlement = settlement;
-    }
 
     public Backpack getBackpack() {
         return backpack;
@@ -48,8 +42,9 @@ public abstract class Villager extends Organism implements HasName {
     }
 
     public void useItem(Items item) {
-        // TODO: use item
+        getBackpack().removeItem(item);
     }
+
 
     public void setProfession(String profession) {
         this.profession = profession;
@@ -71,5 +66,10 @@ public abstract class Villager extends Organism implements HasName {
     @Override
     public String getTypeName() {
         return "Житель";
+    }
+
+    @Override
+    public String getLocation() {
+        return "Находится в " + getSettlement().getName();
     }
 }

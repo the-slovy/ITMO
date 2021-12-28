@@ -1,5 +1,8 @@
 package lab4.location;
 
+import lab4.Descriptions;
+import sun.security.krb5.internal.crypto.Des;
+
 public class Region extends Location {
     private String country;
     private String terrain;
@@ -24,7 +27,12 @@ public class Region extends Location {
     }
 
     @Override
-    public String getDescription() {
-        return null;
+    public Descriptions getDescription() {
+        return Descriptions.DARK;
+    }
+
+    @Override
+    public String getLocation() {
+        return "Находится в " + getCountry();
     }
 }

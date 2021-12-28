@@ -1,6 +1,8 @@
 package lab4.location;
 
 import lab4.Buildings;
+import lab4.Descriptions;
+import lab4.Items;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -50,7 +52,7 @@ public class Settlement extends Location {
         for (Buildings b : underConstruction) {
             b.setRequiredTime(b.getRequiredTime() - n);
             if (b.getRequiredTime() <= 0) {
-                if (b.getName() != "Mine")
+                if (!(b.getName().equals("Шахта") || b.getName().equals("WoodCutter")))
                     buildingList.add(new Building(b.getName(), b.getSymbol()));
                 temp.add(b);
             }
@@ -64,6 +66,10 @@ public class Settlement extends Location {
     public List<String> getBuildingNamesList() {
         System.out.println("Здания в городе " + getName());
         return buildingList.stream().map(i -> i.name).collect(Collectors.toList());
+    }
+
+    public Region getRegion() {
+        return region;
     }
 
     public List<Building> getBuildingsList() {
@@ -80,8 +86,13 @@ public class Settlement extends Location {
     }
 
     @Override
-    public String getDescription() {
-        return "Деревня " + getTypeName();
+    public Descriptions getDescription() {
+        return Descriptions.VILLAGE;
+    }
+
+    @Override
+    public String getLocation() {
+        return "Находится в регионе: " + getRegion().getName();
     }
 
     public static class Building {

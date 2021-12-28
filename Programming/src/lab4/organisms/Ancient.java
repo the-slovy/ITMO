@@ -1,9 +1,11 @@
 package lab4.organisms;
 
+import lab4.Descriptions;
 import lab4.HasName;
-import lab4.Items;
 import lab4.Traits;
-import lab4.location.City;
+import lab4.exceptions.InvalidCommandException;
+import lab4.exceptions.OrganismCreateException;
+import sun.security.krb5.internal.crypto.Des;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,17 +26,22 @@ public class Ancient extends Organism implements HasName {
 
     public Organism giveCommand(Organism worker, String command) {
         if (command.equals("Shoggot") && worker.getClass().getSimpleName().equals("Builder")) {
-            return ((Builder) worker).createShoggot();
+            try {
+                return ((Builder) worker).createShoggot();
+            } catch (OrganismCreateException e) {
+                System.out.println(e.getMessage());
+            }
         } else if (command.equals("Glowworm") && worker.getClass().getSimpleName().equals("Builder")) {
+            try {
             return ((Builder) worker).createGlowworm();
-        } else if (worker.getClass().getSimpleName().equals("Shoggot") && Arrays.asList("Mine", "M", "H", "T", "S").stream().anyMatch(i -> i.equals(command))) {
-            Shoggot shoggot = (Shoggot) worker;
-            if (shoggot.getSettlement().getClass().getSimpleName().equals("City") && command != "Mine") {
-                City city = (City) (shoggot.getSettlement());
-                if (city.hasResource(Items.STONE)) ((Shoggot) worker).buildBuilding(command);
-                // TODO: exception
-            } else {
+            } catch (OrganismCreateException e) {
+                System.out.println(e.getMessage());
+            }
+        } else if (worker.getClass().getSimpleName().equals("Shoggot") && Arrays.asList("Mine", "WoodCutter", "M", "H", "T", "S").stream().anyMatch(i -> i.equals(command))) {
+            try {
                 ((Shoggot) worker).buildBuilding(command);
+            } catch (InvalidCommandException e) {
+                System.out.println(e.getMessage());
             }
         }
         return null;
@@ -50,13 +57,18 @@ public class Ancient extends Organism implements HasName {
     }
 
     @Override
-    public String getDescription() {
-        return "Его черты: " + getTraits().toString() + ", они преображаются и в них появляются эпические черты.";
+    public String toString() {
+        return "Это " + getTypeName() + ", его имя " + getName() + ", его возраст " + getAge() + " лет";
     }
 
     @Override
-    public String toString() {
-        return "Это " + getTypeName() + ", его имя " + getName() + ", его возраст " + getAge() + " лет";
+    public Descriptions getDescription() {
+        return Descriptions.INTELLIGENCE;
+    }
+
+    @Override
+    public String getLocation() {
+        return "У старца нет дома, он гражданин мира";
     }
 
     private class Rellief {

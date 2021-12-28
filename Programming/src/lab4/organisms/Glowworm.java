@@ -1,5 +1,6 @@
 package lab4.organisms;
 
+import lab4.Descriptions;
 import lab4.Traits;
 
 import java.util.List;
@@ -21,8 +22,14 @@ public class Glowworm extends Organism {
         return getName() + " светится, заменяя полярные сияния";
     }
 
+
     @Override
-    public String getDescription() {
-        return null;
+    public Descriptions getDescription() {
+        return Descriptions.FASTER;
+    }
+
+    @Override
+    public String getLocation() {
+        return "Всегда рядом со старцами";
     }
 }

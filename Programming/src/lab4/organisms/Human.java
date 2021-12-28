@@ -1,9 +1,9 @@
 package lab4.organisms;
 
-import lab4.Items;
+import lab4.Descriptions;
 import lab4.Traits;
 import lab4.location.Settlement;
-import lab4.location.Settlement;
+import sun.security.krb5.internal.crypto.Des;
 
 import java.util.List;
 
@@ -25,20 +25,6 @@ public class Human extends Villager {
         this.salary = salary;
     }
 
-    public Human(String name, int age, Settlement settlement, int money) {
-        super(name, age, settlement);
-
-        this.money = money;
-        this.salary = 0;
-    }
-
-    public Human(String name, int age, Settlement settlement) {
-        super(name, age, settlement);
-
-        this.money = 0;
-        this.salary = 0;
-    }
-
     public int getMoney() {
         return money;
     }
@@ -56,7 +42,7 @@ public class Human extends Villager {
     }
 
     @Override
-    public String getDescription() {
-        return null;
+    public Descriptions getDescription() {
+        return Descriptions.INTELLIGENCE;
     }
 }

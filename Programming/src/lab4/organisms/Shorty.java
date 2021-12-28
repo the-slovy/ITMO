@@ -1,13 +1,12 @@
 package lab4.organisms;
 
+import lab4.Descriptions;
 import lab4.Traits;
 import lab4.location.City;
 
 import java.util.ArrayList;
 import java.util.IntSummaryStatistics;
 import java.util.List;
-
-import static java.util.Arrays.stream;
 
 public class Shorty extends Villager {
     private int height;
@@ -31,6 +30,11 @@ public class Shorty extends Villager {
         return height;
     }
 
+    public String surprised() {
+        if (getSettlement().getBuildingNamesList().contains("Ангар")) return "Увидел ангар";
+        else return "Ангар еще не построен, удивляться рано";
+    }
+
     @Override
     public void happyBirthday() {
         super.happyBirthday();
@@ -51,7 +55,7 @@ public class Shorty extends Villager {
     }
 
     @Override
-    public String getDescription() {
-        return null;
+    public Descriptions getDescription() {
+        return Descriptions.SHORTIES;
     }
 }

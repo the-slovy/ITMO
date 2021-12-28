@@ -1,6 +1,7 @@
 package lab4.location;
 
 import lab4.Buildings;
+import lab4.Descriptions;
 import lab4.Items;
 import lab4.organisms.Organism;
 
@@ -43,8 +44,12 @@ public class City extends Settlement {
     public void checkResources() {
         for (SpecialBuilding b : specialBuildingList) {
             if (b.getSymbol().equals("O")) {
-                for (int i = 0; i < 10; i++) {
-                    addToResources(Items.STONE);
+                for (int i = 0; i < 5; i++) {
+                    resources.add(Items.STONE);
+                }
+            } else if (b.getSymbol().equals("W")) {
+                for (int i = 0; i < 5; i++) {
+                    resources.add(Items.WOOD);
                 }
             }
         }
@@ -58,7 +63,7 @@ public class City extends Settlement {
             void addBuilding(Buildings b) {
                 b.setRequiredTime(b.getRequiredTime() - n);
                 if (b.getRequiredTime() <= 0) {
-                   if (!b.getName().equals("Шахта")) {
+                   if (!(b.getName().equals("Шахта") || b.getName().equals("Лесорубка"))) {
                       getBuildingsList().add(new Building(b.getName(), b.getSymbol()));
                    } else {
                     specialBuildingList.add(new SpecialBuilding(b.getName(), b.getSymbol(), b.getRequiredTime()));
@@ -68,7 +73,7 @@ public class City extends Settlement {
             }
         }
         BuildingAdder adder = new BuildingAdder();
-        for (Buildings b : getUnderConstruction()) {
+        for (Buildings b : this.getUnderConstruction()) {
             adder.addBuilding(b);
         }
 
@@ -77,8 +82,13 @@ public class City extends Settlement {
         }
     }
 
+    @Override
+    public Descriptions getDescription() {
+        return Descriptions.BIG;
+    }
+
     public List<String> getSpecialBuildingNamesList() {
-        System.out.println("Здания в городе " + getName());
+        System.out.println("Cпец. районы в городе " + getName());
         
         // specialBuildingList.stream().map(i -> i.getName()).collect(Collectors.toList());
         return specialBuildingList.stream().map(new Function<SpecialBuilding, String>(){
@@ -96,8 +106,7 @@ public class City extends Settlement {
     public void buildSpecialBuilding(Buildings building, double speed) {
         building.setRequiredTime((int) (building.getRequiredTime() / speed));
         if (building.getRequiredTime() > 0) getUnderConstruction().add(building);
-        else
-            specialBuildingList.add(new SpecialBuilding(building.getName(), building.getSymbol(), building.getRequiredTime()));
+        else specialBuildingList.add(new SpecialBuilding(building.getName(), building.getSymbol(), building.getRequiredTime()));
     }
 
     @Override

@@ -5,7 +5,9 @@ public enum Buildings {
     TAVERN("Таверна", 3, "T"),
     MARKET("Рынок", 5, "M"),
     STABLE("Конюшня", 5, "S"),
-    MINE("Шахта", 10,"O", Items.STONE);
+    HANGAR("Ангар", 5, "A"),
+    MINE("Шахта", 10,"O", Items.STONE),
+    WOODCUTTER("Лесорубка", 10, "W", Items.WOOD);
 
     String name;
     int requiredTime;

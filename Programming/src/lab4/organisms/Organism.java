@@ -43,8 +43,7 @@ public abstract class Organism implements HasDescription {
     }
 
     public boolean HasTrait(Traits trait) {
-        // TODO: проверить наличие черты
-        return true;
+        return traits.contains(trait);
     }
 
     public String getName() {
@@ -63,4 +62,6 @@ public abstract class Organism implements HasDescription {
     public int hashCode() {
         return Objects.hash(name, age, traits);
     }
+
+
 }

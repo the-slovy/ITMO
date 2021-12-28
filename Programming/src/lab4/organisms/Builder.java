@@ -1,10 +1,12 @@
 package lab4.organisms;
 
+import lab4.Descriptions;
 import lab4.Items;
 import lab4.Traits;
 import lab4.exceptions.OrganismCreateException;
 import lab4.location.City;
 import lab4.location.Settlement;
+import sun.security.krb5.internal.crypto.Des;
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,17 +28,26 @@ public class Builder extends Human {
     public Shoggot createShoggot() {
         if (hasItem(Items.PLASMA.getName())) {
             useItem(Items.PLASMA);
-            Shoggot shoggot = new Shoggot("shoggot", Arrays.asList(Traits.HARDWORKING, Traits.CLEVER), 10, Math.random(), 10, this.getSettlement(), new ShoggotRecipe());
+            Shoggot shoggot = new Shoggot("shoggot", Arrays.asList(Traits.HARDWORKING, Traits.CLEVER), 10, mathCalculation(), 10, (City)this.getSettlement(), new ShoggotRecipe());
             return shoggot;
         }
         throw new OrganismCreateException("НЕТ ПЛАЗМЫ");
     }
 
+    private double mathCalculation() {
+        return Math.random() + 1;
+    }
+
+    @Override
+    public Descriptions getDescription() {
+        return Descriptions.ACCURATE;
+    }
+
     static class ShoggotRecipe {
-        String secretRecipe = "СУПЕР_СЕКРЕТНЫЙ_РЕЦЕПТ_ШОГГОТА";
+        private String secretRecipe = "СУПЕР_СЕКРЕТНЫЙ_РЕЦЕПТ_ШОГГОТА";
     }
 
     static class GlowwormRecipe {
-        String secretRecipe = "СУПЕР_СЕКРЕТНЫЙ_РЕЦЕПТ_ФОСФОРИЦИРУЮЩЕГО_ОРГАНИЗМА";
+        private String secretRecipe = "СУПЕР_СЕКРЕТНЫЙ_РЕЦЕПТ_ФОСФОРИЦИРУЮЩЕГО_ОРГАНИЗМА";
     }
 }
