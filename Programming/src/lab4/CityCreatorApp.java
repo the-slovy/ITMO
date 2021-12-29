@@ -9,7 +9,7 @@ import lab4.organisms.*;
 import java.util.Arrays;
 
 public class CityCreatorApp {
-    public static void main(String[] args) throws InvalidCommandException {
+    public static void main(String[] args) {
         // create ancients
         Ancient ancient1 = new Ancient("Нерей", 120, Arrays.asList(Traits.DECADENT, Traits.CLEVER, Traits.MASTER));
         Ancient ancient2 = new Ancient("Протей", 119, Arrays.asList(Traits.DECADENT, Traits.CLEVER));
@@ -43,6 +43,15 @@ public class CityCreatorApp {
         Human citizen4 = new Human("Эддрик", 19, "Рыбак", city, 200, 60);
         Human citizen5 = new Human("Лейк", 19, "Рыбак", city, 200, 60);
 
+        // create shorties
+        Shorty shorty1 = new Shorty("Знайка", 12, city, 100);
+        Shorty shorty2 = new Shorty("Звездочкин", 13, city, 105);
+
+        shorty1.getDescription();
+        shorty2.getDescription();
+        shorty1.surprised();
+        shorty2.surprised();
+
         // move builders from village to city
         builder1.changeCity(city);
         builder2.changeCity(city);
@@ -51,47 +60,46 @@ public class CityCreatorApp {
         Shoggot shoggot1 = (Shoggot) ancient1.giveCommand(builder1, "Shoggot");
         Shoggot shoggot2 = (Shoggot)ancient1.giveCommand(builder1, "Shoggot");
         Shoggot shoggot3 = (Shoggot)ancient1.giveCommand(builder1, "Shoggot");
-        Shoggot shoggot4 = (Shoggot)ancient2.giveCommand(builder2, "Shoggot");
+        //Shoggot shoggot4 = (Shoggot)ancient2.giveCommand(builder2, "Shoggot");
         Glowworm glowworm1 = (Glowworm) ancient2.giveCommand(builder2, "Glowworm");
 
         // build buildings
         ancient1.giveCommand(shoggot1, "Mine");
+        ancient1.giveCommand(shoggot1, "WoodCutter");
         ancient1.giveCommand(shoggot2, "H");
-        ancient1.giveCommand(shoggot3, "M");
+        ancient1.giveCommand(shoggot1, "M");
         System.out.println(glowworm1.getLight());
 
         ancient1.writeHistory("\nГлава первая\nНачинаем постройку города");
         System.out.println(ancient1.getRelliefText());
 
         System.out.println(city.getBuildingNamesList().toString());
+        System.out.println(city.getSpecialBuildingNamesList());
         System.out.println("Строящиеся здания в городе:");
         System.out.println(city.getUnderConstruction().toString());
 
         // waiting a new building
-        World world = new World(Arrays.asList(city, village), Arrays.asList(builder1, builder2, citizen1, citizen2, citizen3, citizen4, citizen5));
-        world.skipDays(40);
+        World world = new World(Arrays.asList(city, village), Arrays.asList(builder1, builder2, citizen1, citizen2, citizen3, citizen4, citizen5, shorty1, shorty2));
+        world.skipDays(100);
 
         System.out.println(city.getBuildingNamesList().toString());
+        System.out.println(city.getSpecialBuildingNamesList());
         System.out.println("Строящиеся здания в городе:");
         System.out.println(city.getUnderConstruction().toString());
-        System.out.println(city.getResources());
-
-        world.skipDays(1000);
         System.out.println(city.getResources());
 
         ancient1.giveCommand(shoggot2, "H");
-        ancient1.giveCommand(shoggot3, "M");
+        ancient1.giveCommand(shoggot1, "M");
         ancient1.giveCommand(shoggot2, "H");
-        ancient1.giveCommand(shoggot3, "M");
-        System.out.println(city.getBuildingNamesList().toString());
-        System.out.println("Строящиеся здания в городе:");
-        System.out.println(city.getUnderConstruction().toString());
-        System.out.println(city.getResources());
-        world.skipDays(1000);
-        System.out.println(city.getBuildingNamesList().toString());
-        System.out.println("Строящиеся здания в городе:");
-        System.out.println(city.getUnderConstruction().toString());
-        System.out.println(city.getResources());
+        ancient1.giveCommand(shoggot1, "M");
+        ancient1.giveCommand(shoggot1, "A");
+        ancient1.giveCommand(shoggot1, "S");
 
+        world.skipDays(1000);
+
+        System.out.println(city.getBuildingNamesList().toString());
+        System.out.println(city.getSpecialBuildingNamesList());
+        System.out.println("Строящиеся здания в городе:");
+        System.out.println(city.getUnderConstruction().toString());
     }
 }

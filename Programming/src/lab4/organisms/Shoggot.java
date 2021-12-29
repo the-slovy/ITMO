@@ -11,7 +11,6 @@ public class Shoggot extends Organism {
     private double speed;
     private int intelligence;
     private City city;
-    private Voice voice;
 
     public Shoggot(String name, List<Traits> traits, int size, double speed, int intelligence, City city, Builder.ShoggotRecipe recipe) {
         super(name, 0, traits);
@@ -20,7 +19,6 @@ public class Shoggot extends Organism {
         this.speed = speed;
         this.intelligence = intelligence;
         this.city = city;
-        this.voice = new Voice();
     }
 
     public int getSize() {
@@ -36,7 +34,23 @@ public class Shoggot extends Organism {
     }
 
     public void buildBuilding(String buildSymbol) throws InvalidCommandException {
-        voice.say("Я начинаю строить здание");
+        class Voice implements HasDescription {
+            public void say(String phrase) {
+                System.out.println("Шоггот сказал: " + phrase + ", его голос был " + getDescription().toString());
+            }
+
+            @Override
+            public Descriptions getDescription() {
+                return Descriptions.MELODIC;
+            }
+
+            @Override
+            public String getLocation() {
+                return "Внутри шоггота";
+            }
+        }
+        new Voice().say("Начинаю разработку здания");
+
         switch (buildSymbol) {
             case "H":
                 if (city.hasResource(Items.WOOD)) {
@@ -94,21 +108,5 @@ public class Shoggot extends Organism {
     @Override
     public String getLocation() {
         return "Находится в " + getCity().getName();
-    }
-
-    public static class Voice implements HasDescription {
-        public void say(String phrase) {
-            System.out.println("Шоггот сказал: " + phrase + ", его голос был " + getDescription().toString());
-        }
-
-        @Override
-        public Descriptions getDescription() {
-            return Descriptions.MELODIC;
-        }
-
-        @Override
-        public String getLocation() {
-            return "Внутри шоггота";
-        }
     }
 }
